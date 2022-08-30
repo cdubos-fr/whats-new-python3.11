@@ -1,0 +1,153 @@
+\documentclass[aspectratio=169, xetex, 12pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{datetime}
+
+\usetheme[mode=dark]{extia}
+\title{Les nouveautés de Python 3.11}
+\author{Clément Dubos}
+\institute{Extia}
+\newdate{date}{06}{09}{2022}
+\date{\displaydate{date}}
+
+\begin{document}
+
+    \maketitle
+
+    \begin{frame}{Sommaire}
+        \hfill
+        \parbox[t]{.9\textwidth}{
+            \begin{minipage}[c][0.2\textheight]{\textwidth}
+                \Large
+                \tableofcontents
+            \end{minipage}
+        }
+    \end{frame}
+
+    \section{Optimization and Performance}
+
+    \begin{frame}{Faster CPython}{Generalité}
+        \begin{minipage}[t]{0.5\paperwidth}
+            \begin{block}{Faster CPython, un projet ambitieux}
+                \begin{itemize}
+                    \item Initiative: Microsoft et Guido Van Rossum
+                    \item Objectif: x5 en 2025 => 1.5/an
+                    \item basé sur HotPy et HotPy2
+                    \item Incrémental sur les différentes version de python a venir.
+                \end{itemize}
+            \end{block}
+        \end{minipage}
+        \hspace{.1cm}
+        \begin{minipage}[t]{0.4\paperwidth}
+            \begin{block}{Statut actuel}
+                \begin{itemize}
+                    \item Speedup x1.25 en moyenne
+                    \item Entre x1.10 et x1.60 selon le workload
+                    \item \href{https://docs.python.org/3.11/whatsnew/3.11.html\#faster-cpython}{Python 3.11 Faster Cpython}
+                \end{itemize}
+            \end{block}
+        \end{minipage}
+    \end{frame}
+
+    \begin{frame}{Faster CPython}{Détail}
+
+        \begin{block}{Speedup du démarrage}
+            \begin{itemize}
+                \item code object et bytecode statiquement alloué par l'interpréteur
+            \end{itemize}
+        \end{block}
+
+        \begin{block}{Speedup du runtime}
+            \begin{itemize}
+                \item Reduction de l'information d'execution en memoire (debug ou on-demand). 3-7\%
+                \item mechanisme de "jump" lors d'un appel de function. 1-3\%
+                \item  Specializing Adaptive Interpreter
+            \end{itemize}
+        \end{block}
+        \begin{block}{Misc}
+            \begin{itemize}
+                \item les objets nécessite moins d'espace mémoire
+                \item Représentation des exceptions plus concise, améliore le catchin de 10\%
+            \end{itemize}
+        \end{block}
+    \end{frame}
+
+    \begin{frame}{Optimisation Global}
+        \begin{block}{}
+            \begin{itemize}
+                \item C-style formatting est maintenant aussi efficace que les f-string
+                \item "Zero-cost" exception => cout du "try" casi null lorsqu'il n'y a pas d'exception
+                \item Les dict ne stock plus les hash lorsqu'il ne manipule que des objet unicode => reduction espace mémoire
+                \item module "re" refactorisé, 10\% plus rapide.
+            \end{itemize}
+        \end{block}
+        %https://docs.python.org/3.11/whatsnew/3.11.html#optimizations
+    \end{frame}
+
+    \section{Exceptions}
+    \begin{frame}{Exception Groups and except*}
+        %https://peps.python.org/pep-0654/
+    \end{frame}
+
+    \begin{frame}{Enriching Exceptions with Notes}
+        %https://docs.python.org/3.11/whatsnew/3.11.html#exceptions-can-be-enriched-with-notes-pep-678
+    \end{frame}
+
+    \begin{frame}{Improved Error Locations in Tracebacks}
+        %https://docs.python.org/3.11/whatsnew/3.11.html#enhanced-error-locations-in-tracebacks
+    \end{frame}
+
+    \section{TOML Parser}
+    \begin{frame}{TOML Parser}
+        %https://docs.python.org/3.11/whatsnew/3.11.html#new-modules
+    \end{frame}
+
+    \section{Major Language Changes}
+    \begin{frame}{Major Language Changes}
+        %https://docs.python.org/3.11/whatsnew/3.11.html#other-language-changes
+    \end{frame}
+
+    \section{Major Modules Updates}
+    \begin{frame}{Major Modules Updates}
+        \begin{minipage}{0.49\paperwidth}
+            \begin{block}{}
+                \begin{itemize}
+                    \item AsyncIO => TaskGroup context manager
+                    \item contextlib => chdir context manager
+                    \item re => atomic groups et possessive quantifier
+                    \item unittest => enterContext() et enterClassContext()
+                \end{itemize}
+            \end{block}
+        \end{minipage}
+        \hspace{0.01cm}
+        \begin{minipage}{0.49\paperwidth}
+            \begin{block}{}
+
+            \end{block}
+        \end{minipage}
+    \end{frame}
+
+    \section{Typing improvements}
+
+    \begin{frame}{Variadic generics}
+        %https://docs.python.org/3.11/whatsnew/3.11.html#new-features-related-to-type-hints
+    \end{frame}
+
+    \begin{frame}{individual TypedDict items}
+        %https://docs.python.org/3.11/whatsnew/3.11.html#new-features-related-to-type-hints
+    \end{frame}
+
+    \begin{frame}{Self type}
+        %https://docs.python.org/3.11/whatsnew/3.11.html#new-features-related-to-type-hints
+    \end{frame}
+
+    \begin{frame}{Arbitrary literal string type}
+        %https://docs.python.org/3.11/whatsnew/3.11.html#new-features-related-to-type-hints
+    \end{frame}
+
+    \begin{frame}{Data Class Transforms}
+        %https://docs.python.org/3.11/whatsnew/3.11.html#new-features-related-to-type-hints
+    \end{frame}
+
+
+\end{document}
