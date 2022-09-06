@@ -107,20 +107,45 @@
         \end{block}
     \end{frame}
 
-    \section{Major Language Changes}
-    \begin{frame}{Major Language Changes}
-        \begin{block}{}
+    \section{Typing improvements}
+    \begin{frame}{Typing improvements}{Part - 1}
+        \begin{block}{Variadic generics}
             \begin{itemize}
-                \item * in \textbf{for statement}
-                \item \textbf{PYTHONSAFEPATH} / \textbf{-P} option
-                \item \textbf{sys.path} ne supporte plus les \textbf{Bytes}
+                \item Introduit \textbf{TypeVarTuple} pour les Variadic Generic
+                \item Variadic Generic: Nombre variable d'entrée de type variable
+            \end{itemize}
+        \end{block}
+        \begin{block}{Self type}
+            \begin{itemize}
+                \item Ajout de l'annotation \textbf{Self} pour les retour du type de l'objet
+            \end{itemize}
+        \end{block}
+    \end{frame}
+    \begin{frame}{Typing improvements}{Part - 2}
+        \begin{block}{Individual TypedDict items}
+            \begin{itemize}
+                \item \textbf{TypedDict} peut marqué ses items comme \textbf{Required} ou \textbf{NotRequired}
+                \item Les items sont \textbf{Required} par défaut, sauf si \textbf{total=False}
+            \end{itemize}
+        \end{block}
+        \begin{block}{Arbitrary literal string type}
+            \begin{itemize}
+                \item l'annotation \textbf{LiteralString} permet de marquer une variable comme une string \textit{statique}
             \end{itemize}
         \end{block}
     \end{frame}
 
-    \section{Major Modules Updates}
-    \begin{frame}{Major Modules Updates}
-        \begin{block}{}
+    \section{Major Language and Modules Changes}
+    \begin{frame}{Major Language and Modules Changes}
+        \begin{block}{Major Language Changes}
+            \begin{itemize}
+                \item * utilisable a présent dans les \textbf{for statement}
+                \item \textbf{PYTHONSAFEPATH} / \textbf{-P} option pour les \textbf{path} potentiellement
+                non secure pour le \textbf{sys.path}
+                \item \textbf{sys.path} ne supporte plus les \textbf{Bytes}
+            \end{itemize}
+        \end{block}
+        \begin{block}{Major Modules Updates}
             \begin{itemize}
                 \item \textbf{AsyncIO} => \textbf{TaskGroup} context manager
                 \item \textbf{contextlib} => \textbf{chdir} context manager
@@ -129,28 +154,5 @@
             \end{itemize}
         \end{block}
     \end{frame}
-
-    \section{Typing improvements}
-
-    \begin{frame}{Variadic generics}
-        %https://docs.python.org/3.11/whatsnew/3.11.html#new-features-related-to-type-hints
-    \end{frame}
-
-    \begin{frame}{individual TypedDict items}
-        %https://docs.python.org/3.11/whatsnew/3.11.html#new-features-related-to-type-hints
-    \end{frame}
-
-    \begin{frame}{Self type}
-        %https://docs.python.org/3.11/whatsnew/3.11.html#new-features-related-to-type-hints
-    \end{frame}
-
-    \begin{frame}{Arbitrary literal string type}
-        %https://docs.python.org/3.11/whatsnew/3.11.html#new-features-related-to-type-hints
-    \end{frame}
-
-    \begin{frame}{Data Class Transforms}
-        %https://docs.python.org/3.11/whatsnew/3.11.html#new-features-related-to-type-hints
-    \end{frame}
-
 
 \end{document}
