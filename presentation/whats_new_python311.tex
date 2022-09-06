@@ -31,8 +31,8 @@
             \begin{block}{Faster CPython, un projet ambitieux}
                 \begin{itemize}
                     \item Initiative: Microsoft et Guido Van Rossum
-                    \item Objectif: x5 en 2025 => 1.5/an
-                    \item basé sur HotPy et HotPy2
+                    \item Objectif: \textbf{x5} en 2025 => 1.5/an
+                    \item basé sur \textbf{HotPy} et \textbf{HotPy2}
                     \item Incrémental sur les différentes version de python a venir.
                 \end{itemize}
             \end{block}
@@ -41,80 +41,91 @@
         \begin{minipage}[t]{0.4\paperwidth}
             \begin{block}{Statut actuel}
                 \begin{itemize}
-                    \item Speedup x1.25 en moyenne
-                    \item Entre x1.10 et x1.60 selon le workload
+                    \item Speedup \textbf{x1.25} en moyenne
+                    \item Entre \textbf{x1.10} et \textbf{x1.60} selon le workload
                     \item \href{https://docs.python.org/3.11/whatsnew/3.11.html\#faster-cpython}{Python 3.11 Faster Cpython}
                 \end{itemize}
             \end{block}
         \end{minipage}
     \end{frame}
 
-    \begin{frame}{Faster CPython}{Détail}
+    \begin{frame}{Faster CPython}{Détail - Startup}
 
         \begin{block}{Speedup du démarrage}
             \begin{itemize}
                 \item code object et bytecode statiquement alloué par l'interpréteur
+                pour les modules essentiels aux démarrage
             \end{itemize}
         \end{block}
+        \includegraphics[scale=0.4]{img/workflow_startup310.png}
+        \includegraphics[scale=0.4]{img/workflow_startup311.png}
+    \end{frame}
 
+    \begin{frame}{Faster CPython}{Détail - Runtime}
         \begin{block}{Speedup du runtime}
             \begin{itemize}
-                \item Reduction de l'information d'execution en memoire (debug ou on-demand). 3-7\%
-                \item mechanisme de "jump" lors d'un appel de function. 1-3\%
-                \item  Specializing Adaptive Interpreter
+                \item Reduction de l'information d'execution en memoire (debug ou on-demand). \textbf{3-7\%}
+                \item mechanisme de "jump" lors d'un appel de function (skip function d'interpretation C). \textbf{1-3\%}
+                \item \href{https://github.com/brandtbucher/specialist}{Specializing Adaptive Interpreter}
             \end{itemize}
         \end{block}
         \begin{block}{Misc}
             \begin{itemize}
                 \item les objets nécessite moins d'espace mémoire
-                \item Représentation des exceptions plus concise, améliore le catchin de 10\%
+                \item Représentation des exceptions plus concise, améliore le catchin de \textbf{10\%}
             \end{itemize}
         \end{block}
     \end{frame}
 
     \begin{frame}{Optimisation Global}
-        \begin{block}{}
+        \begin{block}{Optimisation}
             \begin{itemize}
-                \item C-style formatting est maintenant aussi efficace que les f-string
-                \item "Zero-cost" exception => cout du "try" casi null lorsqu'il n'y a pas d'exception
-                \item Les dict ne stock plus les hash lorsqu'il ne manipule que des objet unicode => reduction espace mémoire
-                \item module "re" refactorisé, 10\% plus rapide.
+                \item C-style formatting \textbf{\%s}, \textbf{\%r}, \textbf{\%a} est maintenant aussi efficace que les f-string
+                \item "Zero-cost" exception => cout du \textbf{try} casi null lorsqu'il n'y a pas d'exception
+                \item Les \textbf{dict} ne stock plus les \textbf{hash} lorsqu'il ne manipule que des objet unicode => reduction espace mémoire
+                \item module \textbf{re} refactorisé en partie, \textbf{10\%} plus rapide.
             \end{itemize}
         \end{block}
-        %https://docs.python.org/3.11/whatsnew/3.11.html#optimizations
     \end{frame}
 
     \section{Exceptions}
-    \begin{frame}{Exception Groups and except*}
-        %https://peps.python.org/pep-0654/
-    \end{frame}
-
-    \begin{frame}{Enriching Exceptions with Notes}
-        %https://docs.python.org/3.11/whatsnew/3.11.html#exceptions-can-be-enriched-with-notes-pep-678
-    \end{frame}
-
-    \begin{frame}{Improved Error Locations in Tracebacks}
-        %https://docs.python.org/3.11/whatsnew/3.11.html#enhanced-error-locations-in-tracebacks
-    \end{frame}
-
-    \section{TOML Parser}
-    \begin{frame}{TOML Parser}
-        %https://docs.python.org/3.11/whatsnew/3.11.html#new-modules
+    \begin{frame}{Exceptions}
+        \begin{block}{Exception Groups and except*}
+            \begin{itemize}
+                \item \href{https://peps.python.org/pep-0654/}{PEP 654}
+            \end{itemize}
+        \end{block}
+        \begin{block}{Enriching Exceptions with Notes}
+            \begin{itemize}
+                \item ajout d'une methode \textbf{add\_note} pour les exceptions
+            \end{itemize}
+        \end{block}
+        \begin{block}{Improved Error Locations in Tracebacks}
+            \begin{itemize}
+                \item \href{https://docs.python.org/3.11/whatsnew/3.11.html\#enhanced-error-locations-in-tracebacks}{Error Locations in Tracebacks Exemple}
+            \end{itemize}
+        \end{block}
     \end{frame}
 
     \section{Major Language Changes}
     \begin{frame}{Major Language Changes}
-        %https://docs.python.org/3.11/whatsnew/3.11.html#other-language-changes
+        \begin{block}{}
+            \begin{itemize}
+                \item * in \textbf{for statement}
+                \item \textbf{PYTHONSAFEPATH} / \textbf{-P} option
+                \item \textbf{sys.path} ne supporte plus les \textbf{Bytes}
+            \end{itemize}
+        \end{block}
     \end{frame}
 
     \section{Major Modules Updates}
     \begin{frame}{Major Modules Updates}
         \begin{block}{}
             \begin{itemize}
-                \item AsyncIO => TaskGroup context manager
-                \item contextlib => chdir context manager
-                \item re => atomic groups et possessive quantifier
-                \item unittest => enterContext() et enterClassContext()
+                \item \textbf{AsyncIO} => \textbf{TaskGroup} context manager
+                \item \textbf{contextlib} => \textbf{chdir} context manager
+                \item \textbf{re} => atomic groups et possessive quantifier
+                \item \textbf{unittest} => \textbf{enterContext()} et \textbf{enterClassContext()}
             \end{itemize}
         \end{block}
     \end{frame}

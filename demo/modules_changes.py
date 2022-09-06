@@ -5,12 +5,12 @@ import unittest
 import os
 
 
-def demo_asyncio_taskgroup():
+def demo_asyncio_taskgroup() -> None:
     async def square(x: int):
         print(y:=x*x)
         return y
 
-    async def asyncio_taskgroup():
+    async def asyncio_taskgroup() -> None:
         # old way
         # futures = map(square, range(5))
         # await asyncio.gather(*futures)
@@ -22,7 +22,7 @@ def demo_asyncio_taskgroup():
     asyncio.run(asyncio_taskgroup())
 
 
-def demo_contextlib_chdir():
+def demo_contextlib_chdir() -> None:
     # change dynamicly the current directory
     # then go back to the old one when exiting
     # the context manager
@@ -37,7 +37,7 @@ def demo_contextlib_chdir():
     print(f'{final_dir=}')
     assert final_dir == current_dir
 
-def demo_re_atomic():
+def demo_re_atomic() -> None:
     # for abcc:
     #    -> match first 'a', then match 'bc', then match 'c'
     # for abc:
@@ -52,7 +52,7 @@ def demo_re_atomic():
         print(f'atomic match {text}?:', atomic_regex.match(text))
         print(f'non atomic match {text}?:', non_atomic_regex.match(text))
 
-def demo_re_possessive_quantifier():
+def demo_re_possessive_quantifier() -> None:
     # for 'bb':
     #   for possessive quantifier:
     #       -> (?:a|b) match b, then (?:a|b) match b, then b match nothing => failed
@@ -72,5 +72,5 @@ class TestSomeThing(unittest.TestCase):
         self.current_dir = os.getcwd()
         self.enterContext(contextlib.chdir(".."))
 
-    def test_something(self):
+    def test_something(self) -> None:
         assert os.getcwd() == os.path.dirname(self.current_dir)
