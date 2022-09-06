@@ -39,6 +39,7 @@ def demo_self_typing() -> None:
             print(self)
             return self
 
+        @classmethod
         def get_instance(cls: type[Self]) -> Self:
             return cls()
 
@@ -52,7 +53,7 @@ def demo_literal_string() -> None:
     base_query_dsl: LiteralString = "input | get-value | sort"
     extract_alpha_key = "extract key | filter key = [a-zA-Z]"  # LiteralString
 
-    query_dsl("input | get-value")
+    query_dsl("input | get-value")  # ok
     query_dsl(some_string)  # type check will fail
     query_dsl(base_query_dsl)  # ok
     query_dsl(f"{base_query_dsl} | {some_string}")  # type check will fail
